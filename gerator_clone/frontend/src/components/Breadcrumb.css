@@ -1,0 +1,27 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.breadcrumb-item.active {
+  color: #374151;
+  font-weight: 500;
+}
+
+.home-icon {
+  color: #6b7280;
+}
+
+.chevron-right {
+  color: #d1d5db;
+  flex-shrink: 0;
+}

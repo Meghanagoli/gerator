@@ -1,0 +1,98 @@
+.sidebar {
+  width: 380px;
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  min-height: calc(100vh - 80px);
+  padding: 24px 0;
+}
+
+.sidebar-content {
+  padding: 0 24px;
+}
+
+.filters-header {
+  margin-bottom: 32px;
+}
+
+.filter-section .filter-title {
+  margin-bottom: 10px;
+  /* space between title and options */
+  font-weight: 600;
+  color: #111827;
+  font-size: 16px;
+}
+
+.filter-section .filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* space between individual options */
+}
+
+.filters-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.filters-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.filter-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.filter-actions-separator {
+  width: 100%;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* space between line and buttons */
+}
+
+.filter-actions {
+
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 70px;
+  margin-left: 20px;
+}
+
+.filter-actions .cancel-btn {
+  padding: 6px 14px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+}
+
+.filter-actions .apply-btn {
+  padding: 8px 24px;
+  /* bigger width */
+  background-color: #6c5ce7;
+  /* purple */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+
+}
+
+.filter-actions .apply-btn:hover {
+  background-color: #5a4bcf;
+  /* darker purple on hover */
+}
