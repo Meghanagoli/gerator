@@ -3,7 +3,7 @@
 A full-stack assignment to replicate the functionality and UI of the [Gerator Devices](https://gerator.com/devices) page using **React (Redux Toolkit)** for the frontend, **Node.js + Express** for the backend, and **MySQL** for the database.
 
 This project demonstrates responsive UI development, RESTful API design, state management with Redux Toolkit, and database integration.
-###  Live url: 
+###  Live url: https://gerator-frontend-4qfv.vercel.app/
 ---
 
 ## 🚀 Tech Stack
@@ -46,7 +46,7 @@ gerator_clone
 
 
 ### 🌐 Database
-- ✅ MySQL `devices` table  
+- ✅ MySQL `devices`, `users` table  
 - ✅ 20–30 manually inserted sample device records  
 - ✅ Fields like `title`, `price`, `transaction_type`, `post_publish_date`, etc.
 
@@ -95,7 +95,7 @@ The application has a simple and clear navigation structure:
 ```bash
 git clone https://github.com/Meghanagoli/gerator.git
 cd gerator
-cd gerator-clone
+cd gerator_clone
 ```
 ### 2️⃣ Backend Setup
 ``` bash
@@ -170,10 +170,12 @@ The frontend runs on: http://localhost:5173
 ``` bash
 http://localhost:4000/api/devices
 ```
+- live url :https://gerator-backend-zsf6.onrender.com/api/devices
 ### GET Device by ID
 ``` bash
 http://localhost:4000/api/devices/:id
 ```
+- live url :https://gerator-backend-zsf6.onrender.com/api/devices/18
 ---
 ###  Contact
 
