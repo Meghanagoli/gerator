@@ -12,14 +12,13 @@ function MainContent({ filters = {}, sortOption = 'date_desc', setSortOption = (
 
   const [visibleCount, setVisibleCount] = useState(5);
 
-  // fetch devices on mount (still fetch now so data is ready when the user hits Apply or sorts)
   useEffect(() => {
     dispatch(fetchDevices());
   }, [dispatch]);
 
   const sortedDevices = [...(devices || [])];
 
-  if (sortOption) { // only sort if sortOption is not empty
+  if (sortOption) {
     if (sortOption === 'date_desc') {
       sortedDevices.sort((a, b) => new Date(b.post_publish_date) - new Date(a.post_publish_date));
     } else if (sortOption === 'date_asc') {
@@ -32,13 +31,10 @@ function MainContent({ filters = {}, sortOption = 'date_desc', setSortOption = (
   }
 
 
-  // Apply filters from parent (same filtering logic)
   const filteredDevices = sortedDevices.filter((device) => {
-    // ===== Price Filter =====
     if (filters.priceMin != null && Number(device.price || 0) < Number(filters.priceMin)) return false;
     if (filters.priceMax != null && Number(device.price || 0) > Number(filters.priceMax)) return false;
 
-    // ===== Date Posted Filter =====
     if (filters.startDate) {
       const deviceDate = device.post_publish_date ? new Date(device.post_publish_date) : null;
       if (!deviceDate || deviceDate < new Date(filters.startDate)) return false;
@@ -48,32 +44,26 @@ function MainContent({ filters = {}, sortOption = 'date_desc', setSortOption = (
       if (!deviceDate || deviceDate > new Date(filters.endDate)) return false;
     }
 
-    // ===== Seller Role =====
     if (filters.sellerRole && filters.sellerRole.length > 0) {
       if (!filters.sellerRole.includes(device.seller_role)) return false;
     }
 
-    // ===== Warranty =====
     if (filters.warranty && filters.warranty.length > 0) {
       if (!filters.warranty.includes(device.warranty)) return false;
     }
 
-    // ===== Shipping =====
     if (filters.shipping && filters.shipping.length > 0) {
       if (!filters.shipping.includes(device.shipping)) return false;
     }
 
-    // ===== Country =====
     if (filters.country && filters.country.length > 0) {
       if (!filters.country.includes(device.country)) return false;
     }
 
-    // ===== Device Category (title column) =====
     if (filters.deviceCategory && filters.deviceCategory.length > 0) {
       if (!filters.deviceCategory.includes(device.title)) return false;
     }
 
-    // ===== OEM Brand & Clinical Applications (tags column) =====
     if ((filters.oemBrand && filters.oemBrand.length > 0) || (filters.clinicalApplications && filters.clinicalApplications.length > 0)) {
       const deviceTags = device.tags ? device.tags.split(',').map(t => t.trim()) : [];
 
@@ -88,13 +78,12 @@ function MainContent({ filters = {}, sortOption = 'date_desc', setSortOption = (
       }
     }
 
-    // ===== Year of Manufacture (from created_at) =====
     if (filters.yearOfManufacture && filters.yearOfManufacture.length > 0) {
       const year = device.created_at ? new Date(device.created_at).getFullYear().toString() : null;
       if (!year || !filters.yearOfManufacture.includes(year)) return false;
     }
 
-    return true; // device passes all filters
+    return true;
   });
 
 
@@ -102,7 +91,6 @@ function MainContent({ filters = {}, sortOption = 'date_desc', setSortOption = (
 
   const handleLoadMore = () => setVisibleCount((p) => p + 5);
 
-  // If showResults is false, render an empty state (no devices visible)
   if (!showResults) {
     return (
       <main className="main-content">
@@ -117,7 +105,6 @@ function MainContent({ filters = {}, sortOption = 'date_desc', setSortOption = (
     );
   }
 
-  // show device grid when showResults === true
   return (
     <main className="main-content">
       <div className="main-content-inner">

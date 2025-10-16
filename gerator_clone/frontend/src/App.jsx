@@ -1,10 +1,8 @@
-// src/App.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthContext';
 import Login from './components/Login';
 import Register from './components/Register';
-import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
@@ -54,14 +52,11 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* ✅ Home */}
           <Route path="/" element={<Home />} />
 
-          {/* ✅ Auth Pages */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* ✅ Protected Devices Page */}
           <Route
             path="/devices"
             element={

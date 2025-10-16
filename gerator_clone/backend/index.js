@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const JWT_SECRET = process.env.JWT_SECRET;
-
+//signup
 app.post('/api/register', async (req, res) => {
     const { name, email, password } = req.body;
     if (!email || !password || !name) return res.status(400).json({ message: 'All fields required' });
@@ -21,6 +21,7 @@ app.post('/api/register', async (req, res) => {
     await pool.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hashedPassword]);
     res.json({ message: 'User registered successfully' });
 });
+//login
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ message: 'All fields required' });

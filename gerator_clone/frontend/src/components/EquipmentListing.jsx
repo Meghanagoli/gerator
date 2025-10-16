@@ -1,4 +1,3 @@
-import React from 'react';
 import './EquipmentListing.css';
 
 const EquipmentListing = ({ devices }) => {
@@ -6,13 +5,11 @@ const EquipmentListing = ({ devices }) => {
         return <p>No devices found.</p>;
     }
 
-    // Helper to format price with commas
     const formatPrice = (price) => {
         if (!price) return '';
         return '$' + Number(price).toLocaleString();
     };
 
-    // Helper to format date
     const formatDate = (dateStr) => {
         if (!dateStr) return '';
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -26,7 +23,7 @@ const EquipmentListing = ({ devices }) => {
                     <div className="listing-content">
                         <div className="listing-image">
                             <img
-                                src="https://s3.us-east-2.amazonaws.com/asset.gerator/images/1756187672337-IGUL1MJseR.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAZMT7BJM2SERREFR7%2F20251013%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20251013T144129Z&X-Amz-Expires=604800&X-Amz-Signature=b892b91ec2998983729f4409aa97a2d8179383ea0e192cbabfdc002c74c7efd8&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+                                src={device.image_url}
                                 alt={device.title}
                                 referrerPolicy="no-referrer"
                             />

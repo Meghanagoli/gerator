@@ -1,14 +1,13 @@
-import React from 'react';
-import './ListingsHeader.css';
+import "./ListingsHeader.css";
 
 function ListingsHeader({ sortOption, setSortOption }) {
   return (
     <div className="listings-header">
       <div className="listings-info">
-        <h1 className="listings-title">
-          Listings Found
-        </h1>
-        <p className="listings-subtitle">You searched based on the following criteria.</p>
+        <h1 className="listings-title">Medical Equipment Listings</h1>
+        <p className="listings-subtitle">
+          Discover premium medical devices from trusted suppliers worldwide.
+        </p>
       </div>
 
       <div className="listings-actions">

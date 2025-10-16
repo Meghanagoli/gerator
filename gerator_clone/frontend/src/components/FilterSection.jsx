@@ -1,5 +1,4 @@
-// FilterSection.jsx
-import React, { useState, forwardRef, useRef, useEffect } from 'react';
+import { useState, forwardRef, useRef, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './FilterSection.css';
@@ -7,13 +6,14 @@ import './FilterSection.css';
 const CustomDateInput = forwardRef(({ value, onClick, placeholder }, ref) => (
   <button type="button" className="date-input-wrapper" onClick={onClick} ref={ref}>
     <span className={`date-input-text ${value ? 'has-value' : ''}`}>{value || placeholder}</span>
+
   </button>
 ));
 CustomDateInput.displayName = 'CustomDateInput';
 
 function FilterSection({
   title,
-  type = 'checkboxes', // 'range' | 'date' | 'checkboxes' | 'search'
+  type = 'checkboxes',
   options = [],
   value,
   onChange,
@@ -140,9 +140,7 @@ function FilterSection({
                   key={opt}
                   className={`dropdown-item ${selectedOptions.includes(opt) ? 'selected' : ''}`}
                   onClick={() => {
-                    // toggle selection...
                     toggleSelectOption(opt);
-                    // then close dropdown and clear query so next open shows full list
                     setIsSearchOpen(false);
                     setQuery('');
                   }}

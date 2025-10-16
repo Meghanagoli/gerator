@@ -1,9 +1,7 @@
-// Sidebar.jsx
 import React, { useState, useEffect } from 'react';
 import FilterSection from './FilterSection';
 import './Sidebar.css';
 
-// mapping from human title -> filter key expected by MainContent
 const titleToKey = {
   'Price': 'price', // handled as priceMin/priceMax
   'Date Posted': 'date', // handled as startDate/endDate
@@ -42,15 +40,12 @@ function Sidebar({ initialFilters = {}, onApply, }) {
     physicalLocation: []
   };
 
-  // start tempFilters merged with any initialFilters provided
   const [tempFilters, setTempFilters] = useState({ ...defaultFilters, ...initialFilters });
 
-  // keep tempFilters in sync if parent changes initialFilters
   useEffect(() => {
     setTempFilters({ ...defaultFilters, ...initialFilters });
   }, [initialFilters]);
 
-  // sample options — replace/fetch from server as needed
   const countryOptions = ["Afghanistan", "Abkhazia", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas",
     "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
     "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Canary Island", "Cape Verde", "Cayman Islands",
@@ -140,7 +135,6 @@ function Sidebar({ initialFilters = {}, onApply, }) {
     { title: 'Physical Location', hasSearch: true, options: locationOptions },
   ];
 
-  // update tempFilters when individual FilterSection changes
   const handleChange = (sectionTitle, val) => {
     if (sectionTitle === 'Price') {
       setTempFilters((p) => ({ ...p, priceMin: val.priceMin ?? null, priceMax: val.priceMax ?? null }));
@@ -155,12 +149,10 @@ function Sidebar({ initialFilters = {}, onApply, }) {
     setTempFilters((p) => ({ ...p, [key]: val || [] }));
   };
 
-  // Apply pushes tempFilters to parent
   const applyFilters = () => {
     onApply && onApply({ ...tempFilters });
   };
 
-  // Reset clears EVERYTHING (local UI + parent filters)
   const resetFilters = () => {
     setTempFilters({ ...defaultFilters });
     onApply && onApply({ ...defaultFilters });

@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const fetchDevices = createAsyncThunk('devices/fetchDevices', async () => {
-    const response = await axios.get('https://gerator-backend-1.onrender.com/api/devices');
+    const response = await axios.get('http://localhost:4000/api/devices');
     return response.data;
 });
 
 const deviceSlice = createSlice({
     name: 'devices',
     initialState: {
-        devices: [], // default empty array
+        devices: [],
         loading: false,
         error: null
     },

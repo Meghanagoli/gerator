@@ -1,5 +1,5 @@
 // src/auth/AuthContext.jsx
-import React, { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import axiosClient from '../utils/axiosClient';
 
 export const AuthContext = createContext();
@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(() => localStorage.getItem('auth_token') || null);
     const [loading, setLoading] = useState(false);
 
-    // keep axiosClient Authorization header in sync with token
     useEffect(() => {
         if (token) {
             axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -25,7 +24,6 @@ export const AuthProvider = ({ children }) => {
         }
     }, [token]);
 
-    // persist user + token
     const saveAuth = (userObj, jwt) => {
         setUser(userObj);
         setToken(jwt);
@@ -68,7 +66,6 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         clearAuth();
-        // optionally inform backend (if you keep server-side session blacklist)
     };
 
     return (
